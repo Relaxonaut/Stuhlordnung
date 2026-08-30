@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitzordnung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Sitzordnung</h1>
+      <div class="mode-switch">
+        <button id="mode-chairs" class="active">Stühle platzieren</button>
+        <button id="mode-people">Personen &amp; Wünsche</button>
+      </div>
+      <button id="solve-btn">Sitzordnung berechnen</button>
+    </header>
+
+    <main>
+      <section id="canvas-section">
+        <p class="hint">
+          Klick auf die Fläche = Stuhl setzen. Stuhl anklicken + ziehen = verschieben.
+          Rechtsklick auf Stuhl = löschen. Oben = vorne / Bühne.
+        </p>
+        <div class="stage-label">BÜHNE / VORNE</div>
+        <svg id="canvas" viewBox="0 0 1000 700"></svg>
+      </section>
+
+      <section id="people-section" class="hidden">
+        <div class="people-toolbar">
+          <input id="new-person-name" placeholder="Name der Person" />
+          <button id="add-person-btn">+ Person hinzufügen</button>
+        </div>
+        <div id="people-list"></div>
+      </section>
+    </main>
+
+    <div id="result-panel" class="hidden">
+      <h2>Ergebnis</h2>
+      <div id="result-status"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
