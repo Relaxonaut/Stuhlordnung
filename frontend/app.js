@@ -1,20 +1,14 @@
-// ---------------------------------------------------------------------------
-// Zustand der App. Alles hier drin ist die "Wahrheit" - die SVG/HTML-Elemente
-// sind nur eine Anzeige davon. Wenn sich etwas ändert, rufen wir render...()
-// auf, um die Anzeige neu aufzubauen.
-// ---------------------------------------------------------------------------
+
 const state = {
-  chairs: [],   // { id, x, y }
-  people: [],   // { id, name, desired: [id], avoid: [id], position_mode }
-  lastAssignment: null, // chair_id -> person_id, nachdem der Server geantwortet hat
+  chairs: [],
+  people: [],
+  lastAssignment: null,
 };
 
 let idCounter = 0;
 const newId = (prefix) => `${prefix}_${idCounter++}`;
 
-// ---------------------------------------------------------------------------
-// Canvas: Stühle setzen / verschieben / löschen
-// ---------------------------------------------------------------------------
+
 const svg = document.getElementById("canvas");
 const CHAIR_R = 16;
 
@@ -29,13 +23,12 @@ function svgPoint(evt) {
 }
 
 svg.addEventListener("click", (evt) => {
-  // Wenn der Klick auf einem existierenden Stuhl war, wurde das schon von
-  // dessen eigenem Handler behandelt (siehe unten) - hier nur neue Stühle.
+
   if (evt.target !== svg) return;
   const { x, y } = svgPoint(evt);
   state.chairs.push({ id: newId("chair"), x, y });
   renderCanvas();
-  renderPeople(); // Positions-Auswahl könnte von Stuhlanzahl abhängen
+  renderPeople();
 });
 
 function renderCanvas() {
@@ -86,9 +79,7 @@ function renderCanvas() {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Personen & Wünsche
-// ---------------------------------------------------------------------------
+
 const peopleListEl = document.getElementById("people-list");
 
 document.getElementById("add-person-btn").addEventListener("click", () => {
@@ -192,9 +183,7 @@ function renderPeople() {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Modus umschalten (Stühle / Personen)
-// ---------------------------------------------------------------------------
+
 const canvasSection = document.getElementById("canvas-section");
 const peopleSection = document.getElementById("people-section");
 const modeChairsBtn = document.getElementById("mode-chairs");
@@ -213,19 +202,8 @@ modePeopleBtn.addEventListener("click", () => {
   canvasSection.classList.add("hidden");
 });
 
-// ---------------------------------------------------------------------------
-// API-Aufruf: HIER passiert das HTTP.
-//
-// fetch(url, options) ist die Standard-Browser-Funktion für HTTP-Anfragen.
-//   - method: "POST"      -> wir SENDEN Daten (nicht nur GET-Abruf)
-//   - headers              -> sagt dem Server "der Body ist JSON"
-//   - body: JSON.stringify(...) -> unser JS-Objekt wird zu einem JSON-Text
-//
-// fetch() ist "asynchron": es blockiert die Seite nicht, während auf die
-// Antwort vom Server gewartet wird. Deshalb 'await' - das lässt die Funktion
-// an dieser Stelle pausieren, bis die Antwort da ist, OHNE den Rest der
-// Seite einzufrieren. Die Funktion drumherum muss dafür 'async' sein.
-// ---------------------------------------------------------------------------
+
+
 document.getElementById("solve-btn").addEventListener("click", async () => {
   const resultPanel = document.getElementById("result-panel");
   const statusEl = document.getElementById("result-status");
@@ -251,8 +229,7 @@ document.getElementById("solve-btn").addEventListener("click", async () => {
     });
 
     if (!response.ok) {
-      // Der Server hat einen Fehler-Statuscode geschickt (4xx/5xx).
-      // Bei uns kommt dann {"detail": "..."} vom FastAPI-HTTPException zurück.
+
       const errorBody = await response.json();
       statusEl.textContent = `Fehler: ${errorBody.detail}`;
       return;

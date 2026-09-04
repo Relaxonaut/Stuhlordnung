@@ -1,12 +1,4 @@
-"""
-Pydantic-Modelle.
 
-Was ist das? Pydantic beschreibt, wie eingehendes/ausgehendes JSON aussehen
-MUSS. FastAPI nutzt das automatisch, um Anfragen zu validieren: schickt das
-Frontend fehlerhaftes JSON (z.B. fehlt ein Feld), bekommt es automatisch
-einen 422-Fehler mit genauer Erklärung zurück - du musst das nicht selbst
-prüfen.
-"""
 
 from pydantic import BaseModel
 from typing import Literal
