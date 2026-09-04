@@ -14,13 +14,11 @@ Dann im Browser: http://localhost:8000
 Die interaktive API-Doku (automatisch von FastAPI generiert, gut zum
 Ausprobieren einzelner Requests): http://localhost:8000/docs
 
-## Deploy auf Render (kostenlose Stufe reicht für den Anfang)
+## Render Link für Browser
 
-1. Repo auf GitHub pushen.
-2. Auf render.com: "New Web Service" -> Repo auswählen.
-3. Render erkennt die `render.yaml` automatisch (Build/Start-Command sind
-   dort schon definiert) - einfach "Deploy" klicken.
-4. Nach ein paar Minuten läuft die Seite unter einer `*.onrender.com`-URL.
+Hier ist der Services erreichbar: https://stuhlordnung.onrender.com/
+Der Services braucht ein bisschen zum starten(Wartezeiten von 30-50 Sekunden sind normal).
+
 
 ## Projektstruktur
 

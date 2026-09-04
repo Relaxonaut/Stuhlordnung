@@ -1,0 +1,12 @@
+# Python-Abhängigkeiten
+venv/
+__pycache__/
+*.pyc
+
+# PyInstaller-Ausgaben (die EXEs)
+build/
+dist/
+*.spec
+
+# Inno Setup-Ausgaben
+Output/
