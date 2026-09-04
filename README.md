@@ -20,6 +20,13 @@ Hier ist der Services erreichbar: https://stuhlordnung.onrender.com/
 Der Services braucht ein bisschen zum starten(Wartezeiten von 30-50 Sekunden sind normal).
 
 
+## Installer
+
+Der Installer befindet sich im Repo und kann dort einfach gedownloaded werden,  da das ganze
+nur für den privaten Gebrauch geplant ist habe ich keinen Release 
+dafür erstellt, trotzdem kann es natürlich jeder hier downloaden und verwenden.
+
+
 ## Projektstruktur
 
 ```
@@ -31,4 +38,6 @@ frontend/
   index.html     - Grundgerüst
   style.css      - Styling
   app.js         - Canvas-Interaktion, Personenverwaltung, ruft /api/assign auf
+render.yaml      - Config für Render
+run_desktop-py   - Startet das Programm für Desktop
 ```

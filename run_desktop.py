@@ -4,6 +4,7 @@ import webbrowser
 
 import uvicorn
 
+#desktopsetup mit direktem Browser öffnen
 
 def openbrowser():
     time.sleep(1.5)
