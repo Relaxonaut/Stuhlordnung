@@ -8,6 +8,6 @@ build/
 dist/
 *.spec
 *.gitignore
-
+*.iss
 # Inno Setup-Ausgaben
 Output/
