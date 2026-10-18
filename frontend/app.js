@@ -13,11 +13,15 @@ const svg = document.getElementById("canvas");
 const CHAIR_R = 16;
 
 function svgPoint(evt) {
-  const pt = svg.createSVGPoint();
-  pt.x = evt.clientX;
-  pt.y = evt.clientY;
-  return pt.matrixTransform(svg.getScreenCTM().inverse());
+  const rect = svg.getBoundingClientRect();
+  const scaleX = svg.width.baseVal.value / rect.width;
+  const scaleY = svg.height.baseVal.value / rect.height;
+  return {
+    x: (evt.clientX - rect.left) * scaleX,
+    y: (evt.clientY - rect.top) * scaleY,
+  };
 }
+
 
 
 svg.addEventListener("click", (evt) => {
