@@ -16,6 +16,8 @@ Ausprobieren einzelner Requests): http://localhost:8000/docs
 
 ## Render Link für Browser
 
+<span style="color:red">Firefox wird aktuell nicht unterstützt. Siehe Abschnitt: "Bugs and Fixes"</span>
+
 Hier ist der Services erreichbar: https://stuhlordnung.onrender.com/
 Der Services braucht ein bisschen zum starten(Wartezeiten von 30-50 Sekunden sind normal).
 
@@ -126,6 +128,7 @@ Es findet keine dauerhafte Speicherung in Datenbanken, kein Tracking und keine P
 Dir stehen als betroffene Person grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung zu. Da wir keine Daten dauerhaft speichern, können wir nach Beendigung deiner Sitzung keine Auskunft über vergangene Eingaben geben. 
 Du hast zudem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
 
+
 ## Bugs and Fixes
 
 ### Bekanntes Problem: Firefox
@@ -149,4 +152,5 @@ Bereits versucht:
 In Firefox blieb der Versatz bei diesen Tests bestehen.
 
 
-### *Aufgrund des erheblichen Zeitaufwandes habe ich das Debugging vorerst eingestellt. Bis auf den Firefox-Bug sind mir aktuell keine weiteren Bugs bekannt.* 
+<span style="color:red; font-size: 2em;">Aufgrund des erheblichen Zeitaufwandes habe ich das Debugging vorerst eingestellt. Bis auf den Firefox-Bug sind mir aktuell keine weiteren Bugs bekannt.</span>
+
