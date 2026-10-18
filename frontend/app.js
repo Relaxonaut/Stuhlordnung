@@ -13,10 +13,22 @@ const svg = document.getElementById("canvas");
 const CHAIR_R = 16;
 
 function svgPoint(evt) {
-  const pt = svg.createSVGPoint();
-  pt.x = evt.clientX;
-  pt.y = evt.clientY;
-  return pt.matrixTransform(svg.getScreenCTM().inverse());
+  const r = svg.getBoundingClientRect();
+  const cs = getComputedStyle(svg);
+  const left = r.left + parseFloat(cs.borderLeftWidth);
+  const top = r.top + parseFloat(cs.borderTopWidth);
+  const w = r.width - parseFloat(cs.borderLeftWidth) - parseFloat(cs.borderRightWidth);
+  const h = r.height - parseFloat(cs.borderTopWidth) - parseFloat(cs.borderBottomWidth);
+  const vb = svg.viewBox.baseVal;
+  const scale = Math.min(w / vb.width, h / vb.height);
+  const offsetX = (w - vb.width * scale) / 2;
+  const offsetY = (h - vb.height * scale) / 2;
+  const x = (evt.clientX - left - offsetX) / scale;
+  const y = (evt.clientY - top - offsetY) / scale;
+  return {
+    x: Math.min(vb.width - CHAIR_R, Math.max(CHAIR_R, x)),
+    y: Math.min(vb.height - CHAIR_R, Math.max(CHAIR_R, y)),
+  };
 }
 
 
