@@ -29,6 +29,24 @@ svg.addEventListener("click", (evt) => {
   renderPeople();
 });
 
+let dragChair = null;
+
+svg.addEventListener("pointerdown", (evt) => {
+  const chairId = evt.target.dataset.chairId;
+  if (!chairId) return;
+  dragChair = state.chairs.find((c) => c.id === chairId);
+});
+
+svg.addEventListener("pointermove", (evt) => {
+  if (!dragChair) return;
+  const p = svgPoint(evt);
+  dragChair.x = p.x;
+  dragChair.y = p.y;
+  renderCanvas();
+});
+
+window.addEventListener("pointerup", () => { dragChair = null; });
+
 function renderCanvas() {
   svg.innerHTML = "";
   for (const chair of state.chairs) {

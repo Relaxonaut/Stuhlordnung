@@ -69,7 +69,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 
 In diesem User interface können Sie beliebig Tische plazieren, verschieben und löschen.
 
-![App Screenshot](images/Screenshot 2026-10-18 182405.png)
+![App Screenshot](images/Screenshot%2026-10-18%182405.png)
 
 Das Plazieren erfolgt über die linke Maustaste und das Löschen über die rechte Maustaste.
 Wie sie oben im Interface sehen, verfügt der Canvas über eine Richtung, Oben ist vorne.
@@ -81,7 +81,7 @@ In diesem Interface lassen sich Namen hinzufügen und entfernen.
 Wenn Sie alle Namen hinzugefügt haben, können Sie die entsprechenden Personen durch
 anklicken auswählen. 
 
-![App Screenshot](images/Screenshot 2026-10-18 183125.png)
+![App Screenshot](images/Screenshot%2026-10-18%183125.png)
 
 Es lassen sich außerdem Positionswünsche mit unterschiedlicher Priorität hinzufügen. 
 Leider bisher begrenzt auf "möchte vorne sitzen" und "muss vorne sitzen". 
@@ -91,7 +91,7 @@ Leider bisher begrenzt auf "möchte vorne sitzen" und "muss vorne sitzen".
 
 Durch das klicken auf "Sitzordnung berechnen" rechnet der Server die bestmögliche Sitzordnung aus.
 
-![App Screenshot](images/Screenshot 2026-10-18 183207.png)
+![App Screenshot](images/Screenshot%2026-10-18%183207.png)
 
 #### Wichtig: Das muss nicht die fairste sein. Der Server geht nach einem Score, welcher nicht berücksichtig, ob einzelne übergangen wurden.
 
@@ -100,7 +100,7 @@ Außerdem lassen sich die Tische aus nach der Berechnung verschieben, wodurch ma
 
 So kann zum Beispiel aus dem vorherigen Bild, das hier werden: 
 
-![App Screenshot](images/Screenshot 2026-10-18 183330.png)
+![App Screenshot](images/Screenshot%2026-10-18%183330.png)
 
 Im unteren Teil sehen Sie außerdem die Anzahl der belegten Plätze.
 
