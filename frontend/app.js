@@ -14,11 +14,13 @@ const CHAIR_R = 16;
 
 function svgPoint(evt) {
   const rect = svg.getBoundingClientRect();
-  const scaleX = svg.width.baseVal.value / rect.width;
-  const scaleY = svg.height.baseVal.value / rect.height;
+  const viewBoxWidth = svg.viewBox.baseVal.width || 1000;
+  const viewBoxHeight = svg.viewBox.baseVal.height || 700;
+  const relativeX = (evt.clientX - rect.left) / rect.width;
+  const relativeY = (evt.clientY - rect.top) / rect.height;
   return {
-    x: (evt.clientX - rect.left) * scaleX,
-    y: (evt.clientY - rect.top) * scaleY,
+    x: relativeX * viewBoxWidth,
+    y: relativeY * viewBoxHeight
   };
 }
 
