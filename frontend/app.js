@@ -20,6 +20,7 @@ function svgPoint(evt) {
 }
 
 
+
 svg.addEventListener("click", (evt) => {
 
   if (evt.target !== svg) return;
