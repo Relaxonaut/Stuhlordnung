@@ -126,3 +126,27 @@ Es findet keine dauerhafte Speicherung in Datenbanken, kein Tracking und keine P
 Dir stehen als betroffene Person grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung zu. Da wir keine Daten dauerhaft speichern, können wir nach Beendigung deiner Sitzung keine Auskunft über vergangene Eingaben geben. 
 Du hast zudem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
 
+## Bugs and Fixes
+
+### Bekanntes Problem: Firefox
+
+Im Firefox sind Mausklicks auf der Stuhl-Fläche vertikal verschoben (in der Mitte
+korrekt, zum oberen/unteren Rand hin zunehmend). In Edge/Chromium tritt das nicht auf.
+Daher wird Firefox aktuell nicht unterstützt.
+
+Bereits versucht:
+
+- Canvas-Höhe von `height: 65vh` auf `aspect-ratio: 1000 / 700` umgestellt,
+  damit keine leeren Streifen um die Zeichenfläche entstehen
+- Koordinatenumrechnung (`svgPoint`) ohne `getScreenCTM()` neu geschrieben:
+  manuelle Berechnung über `getBoundingClientRect()` und die `viewBox`-Skalierung
+- Drag & Drop von Maus-Events auf Pointer-Events umgestellt, mit einmalig
+  registrierten Listenern statt neuen Listenern bei jedem Rendern
+- `touch-action: none` für das Canvas gesetzt
+- Versatz per Konsole vermessen (Klickposition vs. Stuhlposition): bei Klicks
+  oben/unten wich der Stuhl um bis zu ca. 45 px ab, in der Mitte nicht
+
+In Firefox blieb der Versatz bei diesen Tests bestehen.
+
+
+### *Aufgrund des erheblichen Zeitaufwandes habe ich das Debugging vorerst eingestellt. Bis auf den Firefox-Bug sind mir aktuell keine weiteren Bugs bekannt.* 
