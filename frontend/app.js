@@ -1,4 +1,4 @@
-
+//fix 3.1
 const state = {
   chairs: [],
   people: [],
