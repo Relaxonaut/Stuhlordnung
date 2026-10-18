@@ -13,13 +13,10 @@ const svg = document.getElementById("canvas");
 const CHAIR_R = 16;
 
 function svgPoint(evt) {
-  const rect = svg.getBoundingClientRect();
-  const relativeX = evt.clientX;
-  const relativeY = evt.clientY;
-  return {
-    x: relativeX,
-    y: relativeY
-  };
+  const pt = svg.createSVGPoint();
+  pt.x = evt.clientX;
+  pt.y = evt.clientY;
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
 }
 
 
