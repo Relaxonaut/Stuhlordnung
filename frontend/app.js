@@ -1,4 +1,3 @@
-//fix 3.1
 const state = {
   chairs: [],
   people: [],
@@ -7,7 +6,6 @@ const state = {
 
 let idCounter = 0;
 const newId = (prefix) => `${prefix}_${idCounter++}`;
-
 
 const svg = document.getElementById("canvas");
 const CHAIR_R = 16;
@@ -30,8 +28,6 @@ function svgPoint(evt) {
     y: Math.min(vb.height - CHAIR_R, Math.max(CHAIR_R, y)),
   };
 }
-
-
 
 svg.addEventListener("click", (evt) => {
 
@@ -73,6 +69,7 @@ function renderCanvas() {
     rect.setAttribute("height", size);
     rect.setAttribute("rx", 4);
     rect.setAttribute("class", "chair-circle");
+    rect.dataset.chairId = chair.id;
 
     const personId = state.lastAssignment ? state.lastAssignment[chair.id] : null;
     const person = personId ? state.people.find((p) => p.id === personId) : null;
@@ -83,19 +80,6 @@ function renderCanvas() {
     label.setAttribute("class", "chair-label");
     label.textContent = person ? person.name : "";
 
-    // Drag-to-move
-    let dragging = false;
-    rect.addEventListener("mousedown", () => (dragging = true));
-    window.addEventListener("mouseup", () => (dragging = false));
-    svg.addEventListener("mousemove", (evt) => {
-      if (!dragging) return;
-      const p = svgPoint(evt);
-      chair.x = p.x;
-      chair.y = p.y;
-      renderCanvas();
-    });
-
-    // Rechtsklick = löschen
     rect.addEventListener("contextmenu", (evt) => {
       evt.preventDefault();
       state.chairs = state.chairs.filter((c) => c.id !== chair.id);
@@ -107,7 +91,6 @@ function renderCanvas() {
     svg.appendChild(g);
   }
 }
-
 
 const peopleListEl = document.getElementById("people-list");
 
@@ -122,7 +105,7 @@ document.getElementById("add-person-btn").addEventListener("click", () => {
 
 function toggleTag(person, otherId, listName) {
   const otherList = listName === "desired" ? "avoid" : "desired";
-  person[otherList] = person[otherList].filter((id) => id !== otherId); // exklusiv
+  person[otherList] = person[otherList].filter((id) => id !== otherId);
   if (person[listName].includes(otherId)) {
     person[listName] = person[listName].filter((id) => id !== otherId);
   } else {
@@ -154,7 +137,6 @@ function renderPeople() {
     nameRow.appendChild(delBtn);
     card.appendChild(nameRow);
 
-    // Positionswunsch
     const posRow = document.createElement("div");
     posRow.className = "row";
     posRow.innerHTML = `<span class="label">Position:</span>`;
@@ -174,7 +156,6 @@ function renderPeople() {
     posRow.appendChild(select);
     card.appendChild(posRow);
 
-    // Wunsch-Nachbarn
     const others = state.people.filter((p) => p.id !== person.id);
     if (others.length > 0) {
       const desiredRow = document.createElement("div");
@@ -212,7 +193,6 @@ function renderPeople() {
   }
 }
 
-
 const canvasSection = document.getElementById("canvas-section");
 const peopleSection = document.getElementById("people-section");
 const modeChairsBtn = document.getElementById("mode-chairs");
@@ -230,8 +210,6 @@ modePeopleBtn.addEventListener("click", () => {
   peopleSection.classList.remove("hidden");
   canvasSection.classList.add("hidden");
 });
-
-
 
 document.getElementById("solve-btn").addEventListener("click", async () => {
   const resultPanel = document.getElementById("result-panel");
@@ -264,7 +242,7 @@ document.getElementById("solve-btn").addEventListener("click", async () => {
       return;
     }
 
-    const data = await response.json(); // { assignment: { chairId: personId, ... } }
+    const data = await response.json();
     state.lastAssignment = data.assignment;
     statusEl.textContent = `Fertig - ${Object.keys(data.assignment).length} von ${state.chairs.length} Stühlen belegt.`;
     renderCanvas();
